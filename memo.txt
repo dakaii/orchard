@@ -1,6 +1,0 @@
-https://stackoverflow.com/questions/46862757/boilerplate-code-for-setting-up-redux-on-a-expo-cnapp-project
-https://medium.com/dailyjs/11-mistakes-ive-made-during-react-native-redux-app-development-8544e2be9a9
-
-do not use axios
-
-
