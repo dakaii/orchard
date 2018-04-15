@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
-import styles from './style';
+import styles from './Style';
 
 class LinksScreen extends React.Component {
   static navigationOptions = {
