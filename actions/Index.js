@@ -11,13 +11,11 @@ export const videoAPI = async (options) => {
   const url = `https://www.googleapis.com/youtube/v3/search?q=${options.keyword}&part=snippet&key=${API_KEY}`;
   return await axios.get(url)
     .then(function(response) {
-      // console.log(response.data.items);
       return {
         type: GET_VIDEO_SUCCESS,
         payload: response.data.items
       };
     }).catch(function(error) {
-      // console.error(error);
       return {
         type: GET_VIDEO_FAILURE,
         payload: error

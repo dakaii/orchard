@@ -9,15 +9,18 @@ import { videoAPI} from '../actions/Index';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { video: ''};
-    videoAPI('surfboards');
+    this.state = {
+      videos: [],
+      selectedVideo: null
+    };
+    this.props.videoAPI('surfboards');
   }
 
   render () {
     return (
       <TextInput 
         style={styles.TextInputStyleClass}
-        onChangeText={_.debounce((keyword) => { videoAPI(keyword) }, 500)}
+        onChangeText={_.debounce((keyword) => { this.props.videoAPI(keyword) }, 500)}
         placeholder="Search Here"
       />
     );
@@ -25,7 +28,8 @@ class SearchBar extends Component {
 }
 
 function mapStateToProps(state) {
-  return { video: state.video[0] }
+  return { videos: state.videos,
+           selectedVideo: state.videos[0]}
 }
 
 function mapDispatchToProps(dispatch) {

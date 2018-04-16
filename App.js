@@ -24,12 +24,12 @@ class App extends React.Component {
     } else {
       return (
         <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <RootNavigation />
           </View>
-          </PersistGate>
+          {/* </PersistGate> */}
         </Provider>
       );
     }

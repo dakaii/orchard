@@ -1,30 +1,43 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { View, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import { View, StyleSheet, Text } from 'react-native';
 import Video from 'react-native-video';
 import Carousel from 'react-native-snap-carousel';
 
 
-class VideoCarousel extends React.Component {
+class VideoCarousel extends Component {
 
     render () {
+      let videoId = '';
+      if (this.props.selectedVideo) {
+        videoId = this.props.selectedVideo.id.videoId;
+
+      } else {
+        return <Text>...Loading</Text>
+      }
+      const url = `https://www.youtube.com/embed/${videoId}`;
+
       return (
         <View style={styles.container}>
-
-        {/* <Video
-          source={this.props.selectedVideo}
+        <Video
+          source={url}
           rate={1.0}
           volume={1.0}
           muted={false}
           resizeMode={"cover"}
           style={styles.video}
-        /> */}
+        />
       </View>
       );
     }
   }
 
-export default VideoCarousel;
+  function mapStateToProps(state) {
+    return { videos: state.videos,
+             selectedVideo: state.videos[0]}
+  }
+
+export default connect(mapStateToProps, [])(VideoCarousel)
   
 
 const styles = StyleSheet.create({
