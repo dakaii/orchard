@@ -22,6 +22,7 @@ class SearchBar extends Component {
         style={styles.TextInputStyleClass}
         onChangeText={_.debounce((keyword) => { this.props.videoAPI(keyword) }, 500)}
         placeholder="Search Here"
+        autoCorrect={false}
       />
     );
   }

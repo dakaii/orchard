@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { View, StyleSheet, Text } from 'react-native';
-import Video from 'react-native-video';
-import Carousel from 'react-native-snap-carousel';
+import { StyleSheet, Text, View, Dimensions, WebView }from 'react-native';
+import ScrollView from 'react-native-snap-carousel';
 
 
 class VideoCarousel extends Component {
@@ -11,23 +10,21 @@ class VideoCarousel extends Component {
       let videoId = '';
       if (this.props.selectedVideo) {
         videoId = this.props.selectedVideo.id.videoId;
-
       } else {
-        return <Text>...Loading</Text>
+        return (
+          <Text>...Loading</Text>
+        )
       }
-      const url = `https://www.youtube.com/embed/${videoId}`;
-
       return (
         <View style={styles.container}>
-        <Video
-          source={url}
-          rate={1.0}
-          volume={1.0}
-          muted={false}
-          resizeMode={"cover"}
-          style={styles.video}
-        />
-      </View>
+          {/* <ScrollView onSnapToItem={this.setState({ selectedVideo: this.props.videos[3] })}> */}
+          <WebView
+            source={{ uri: `https://www.youtube.com/embed/${videoId}`}}
+            javaScriptEnabled={true}
+            style={styles.window}
+          />
+          {/* </ScrollView> */}
+        </View>
       );
     }
   }
@@ -61,5 +58,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  window: {
+    width : Dimensions.get('window').width,
+    height : Dimensions.get('window').height,
   },
 });

@@ -20,9 +20,8 @@ class SettingsScreen extends React.Component {
     /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
     return (
-      // <ExpoConfigView />
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-
+      <ExpoConfigView />
       <Text>
         {'...'}
       </Text>
