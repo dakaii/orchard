@@ -1,13 +1,11 @@
 import axios from 'axios';
-
-const ROOT_URL = 'https://www.googleapis.com/youtube/v3/search';
-const API_KEY = 'AIzaSyA43h4UzUNI3zVsnxK_nx6WIiWzoGnOXvY';
+import { GOOGLEAPI_URL, API_KEY } from '../constants/Constants'
 
 export const videoAPI = async (keyword) => {
   if (!API_KEY) {
     throw new Error('Youtube Search expected key, received undefined');
   }
-  const url = `https://www.googleapis.com/youtube/v3/search?q=${keyword}&part=snippet&key=${API_KEY}`;
+  const url = `${GOOGLEAPI_URL}?q=${keyword}&part=snippet&key=${API_KEY}`;
   return await axios.get(url)
     .then(function(response) {
       return {
